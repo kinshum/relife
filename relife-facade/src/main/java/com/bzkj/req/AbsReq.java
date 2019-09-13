@@ -1,0 +1,1 @@
+package com.bzkj.req;import java.io.Serializable;/** * @description: 请求参数的顶层父类 * @author: jensen * @date: created by 2019/9/11 0:26 */public abstract class AbsReq implements Serializable {}
