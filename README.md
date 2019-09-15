@@ -36,3 +36,12 @@ relife-Facade 它处于本系统的最底层，被所有模块依赖，一些公
 
 Gaoxi-runtime 我们将Redis，kafka 一系列软件封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。这些配置均在Gaoxi-runtime系统中完成了。
 
+
+
+
+
+
+relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层的各个模块都被抽象成一个个单独的子系统，它们提供RPC接口供上面的relife-controller调用。它们之间的调用由Dubbo来完成，所以它们的pom文件中并不需要作任何配置。这些模块和relife-facade之间是本地调用，需要将relife-facade打成jar包，并让这些模块依赖这个jar，因此就需要在所有模块的pom中配置和relife-facade的依赖关系。
+
+
+
