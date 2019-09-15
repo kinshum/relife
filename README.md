@@ -91,7 +91,7 @@ relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层�
 3.开发流程 
 
 
-8.2 开发登录服务 
+开发登录服务 
 首先需要在relife-Facade模块的facade包中创建UserService接口，并在其中声明登录的抽象函数。
 
 public interface UserService extends IService<SysUser>{
