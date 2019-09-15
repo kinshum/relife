@@ -2,10 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+
     <groupId>com.bzkj</groupId>
     <artifactId>relife</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
     <packaging>pom</packaging>
 
 
@@ -37,6 +38,7 @@
     </modules>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -65,7 +67,6 @@
             <version>20.0</version>
         </dependency>
 
-
         <dependency>
             <groupId>cn.keking</groupId>
             <artifactId>spring-boot-klock-starter</artifactId>
@@ -78,6 +79,7 @@
             <artifactId>relife-facade</artifactId>
             <version>0.0.1</version>
         </dependency>
+
     </dependencies>
 
 
