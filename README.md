@@ -26,22 +26,26 @@
 
 1.项目模块说明：
 
-relife-Controller 系统的控制层，和以往三层结构中的Controller层的作用一样，都是用作请求调度，这里可以扩展权限，网关
+relife-controller: 系统的控制层，和以往三层结构中的Controller层的作用一样，都是用作请求调度，这里可以扩展权限，网关
 
-relife-cms 管理服务
+relife-cms: 管理服务
 
-Gaoxi-activity 活动服务
+relife-activity: 活动服务
 
-relife-Facade 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。
+relife-runtime: 将Redis，kafka 一系列软件封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。这些配置均在relife-runtime系统中完成了。
 
-Gaoxi-runtime 我们将Redis，kafka 一系列软件封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。这些配置均在Gaoxi-runtime系统中完成了。
-
-
+relife-facade: 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。
 
 
 
 
+
+层次关系说明：
 relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层的各个模块都被抽象成一个个单独的子系统，它们提供RPC接口供上面的relife-controller调用。它们之间的调用由Dubbo来完成，所以它们的pom文件中并不需要作任何配置。这些模块和relife-facade之间是本地调用，需要将relife-facade打成jar包，并让这些模块依赖这个jar，因此就需要在所有模块的pom中配置和relife-facade的依赖关系。
+
+
+
+
 
 
 
@@ -78,10 +82,16 @@ relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层�
 
 
 
-3.发流程 
 
 
-8.2 开发登录服务 
+
+
+
+
+3.开发流程 
+
+
+开发登录服务 
 首先需要在relife-Facade模块的facade包中创建UserService接口，并在其中声明登录的抽象函数。
 
 public interface UserService extends IService<SysUser>{
@@ -91,6 +101,8 @@ public interface UserService extends IService<SysUser>{
 
 
 然后在relife-cms模块的service包中创建UserService的实现——UserServiceImpl。 UserServiceImpl上必须要加上Dubbo的@Service注解，从而告诉Dubbo，在本项目初始化的时候需要将这个类发布成一项服务，供其他系统调用。
+
+ 
 
 @Service(interfaceClass = UserService.class,version = "1.0.0")
 @org.springframework.stereotype.Service
@@ -117,7 +129,6 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
     }
 
 
-8.3 引用登录服务
 当UserService开发完毕后，接下来在relife-controller模块的controller包中分别创建UserController接口和UserControllerImpl实现类,若要使用userService中的函数，仅需要在userService上添加@Reference注解，然后就像调用本地函数一样使用userService即可。
 
 
@@ -160,8 +171,12 @@ public class UserControllerImpl extends BaseController implements UserController
 
 
 
-启动整个工程
-修改cms,runtime,controller模块dev配置文件redis.kafka,zk地址，
+
+
+
+
+4.启动整个工程
+修改cms,  runtime,  activity,  controller模块dev配置文件redis.kafka,zk地址，
 然后依次启动项目。。
 
 
