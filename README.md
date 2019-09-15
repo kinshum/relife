@@ -47,6 +47,10 @@ relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层�
 
 
 
+
+
+
+
 2.Maven的profile功能
 
 <profiles>
@@ -75,6 +79,12 @@ relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层�
 
 在子项目中创建配置
 分别为dev环境、test环境、prod环境创建三套配置，application.proerpties中存放公用的配置。
+
+
+
+
+
+
 
 
 
@@ -157,6 +167,10 @@ public class UserControllerImpl extends BaseController implements UserController
         return Result.newSuccessResult(token);
     }
 }
+
+
+
+
 
 
 
