@@ -30,7 +30,9 @@ relife-Controller 系统的控制层，和以往三层结构中的Controller层�
 
 relife-cms 管理服务
 
-Gaoxi-activity 活动服务
+relife-activity 活动服务
+
+relife-runtime 软件服务
 
 relife-Facade 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。
 
