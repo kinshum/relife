@@ -25,6 +25,7 @@
 
 
 项目模块：
+
 relife-Controller 系统的控制层，和以往三层结构中的Controller层的作用一样，都是用作请求调度，这里可以扩展权限，网关
 
 relife-cms 管理服务
