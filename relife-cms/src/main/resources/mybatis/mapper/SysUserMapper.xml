@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bzkj.cms.dao.SysUserMapper">
+
   <resultMap id="BaseResultMap" type="com.bzkj.entity.user.SysUser">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
@@ -19,34 +20,19 @@
     <result column="user_type" jdbcType="INTEGER" property="userType" />
     <result column="linkman" jdbcType="VARCHAR" property="linkman" />
   </resultMap>
+
   <sql id="Base_Column_List">
     id, user_id, age, create_time, creator, e_id, locked, login_name, user_name, organization_id, 
     `password`, phone, sex, `status`, user_type, linkman
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from sys_user
-    where id = #{id,jdbcType=BIGINT}
-  </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.bzkj.entity.user.SysUser">
-    insert into sys_user (id, user_id, age, 
-      create_time, creator, e_id, 
-      locked, login_name, user_name, 
-      organization_id, `password`, phone, 
-      sex, `status`, user_type, 
-      linkman)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{eId,jdbcType=VARCHAR}, 
-      #{locked,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{organizationId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
-      #{linkman,jdbcType=VARCHAR})
-  </insert>
+
   <insert id="insertSelective" parameterType="com.bzkj.entity.user.SysUser">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -150,6 +136,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateByPrimaryKeySelective" parameterType="com.bzkj.entity.user.SysUser">
     update sys_user
     <set>
@@ -201,23 +189,5 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bzkj.entity.user.SysUser">
-    update sys_user
-    set user_id = #{userId,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=VARCHAR},
-      creator = #{creator,jdbcType=VARCHAR},
-      e_id = #{eId,jdbcType=VARCHAR},
-      locked = #{locked,jdbcType=INTEGER},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
-      organization_id = #{organizationId,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=VARCHAR},
-      user_type = #{userType,jdbcType=INTEGER},
-      linkman = #{linkman,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+
 </mapper>

@@ -16,7 +16,6 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
 
     int updateByPrimaryKeySelective(SysUser record);
 
-    int updateByPrimaryKey(SysUser record);
 
     @Select("select * from sys_user su WHERE su.login_name = #{username} AND su.`password` = #{password}")
     SysUser getUserByNameAndPwd(@Param("username") String username, @Param("password") String password);
