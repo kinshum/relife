@@ -3,7 +3,11 @@ package com.bzkj.config;
 import com.alibaba.dubbo.config.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-
+/**
+ * @description:
+ * @author: jensen
+ * @date: created by 2019/9/12 11:03
+ */
 @ConfigurationProperties(prefix = "spring.dubbo")
 public class DubboProperties {
     private String scan;
