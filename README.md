@@ -32,11 +32,9 @@ relife-cms 管理服务
 
 relife-activity 活动服务
 
-relife-runtime 软件服务
+relife-runtime 将Redis，kafka 一系列软件封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。这些配置均在relife-runtime系统中完成了。
 
-relife-Facade 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。
-
-Gaoxi-runtime 我们将Redis，kafka 一系列软件封装成一个单独的服务，运行在独立的容器中，当哪一个模块需要使用Redis的时候，仅需要引入该服务即可，就免去了各种繁琐的、重复的配置。这些配置均在Gaoxi-runtime系统中完成了。
+relife-facade 它处于本系统的最底层，被所有模块依赖，一些公用的类库都放在这里。
 
 
 
@@ -80,7 +78,7 @@ relife-cms、relife-activty这些模块提供系统的业务逻辑，Service层�
 
 
 
-3.发流程 
+3.开发流程 
 
 
 8.2 开发登录服务 
@@ -162,8 +160,8 @@ public class UserControllerImpl extends BaseController implements UserController
 
 
 
-启动整个工程
-修改cms,runtime,controller模块dev配置文件redis.kafka,zk地址，
+4.启动整个工程
+修改cms,  runtime,  activity,  controller模块dev配置文件redis.kafka,zk地址，
 然后依次启动项目。。
 
 
