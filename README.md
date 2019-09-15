@@ -127,7 +127,6 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
     }
 
 
-8.3 引用登录服务
 当UserService开发完毕后，接下来在relife-controller模块的controller包中分别创建UserController接口和UserControllerImpl实现类,若要使用userService中的函数，仅需要在userService上添加@Reference注解，然后就像调用本地函数一样使用userService即可。
 
 
