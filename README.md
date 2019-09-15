@@ -102,6 +102,8 @@ public interface UserService extends IService<SysUser>{
 
 然后在relife-cms模块的service包中创建UserService的实现——UserServiceImpl。 UserServiceImpl上必须要加上Dubbo的@Service注解，从而告诉Dubbo，在本项目初始化的时候需要将这个类发布成一项服务，供其他系统调用。
 
+ 
+
 @Service(interfaceClass = UserService.class,version = "1.0.0")
 @org.springframework.stereotype.Service
 public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements UserService{
@@ -125,7 +127,7 @@ public class UserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impleme
         }
         return sysUser;
     }
-}
+
 
 当UserService开发完毕后，接下来在relife-controller模块的controller包中分别创建UserController接口和UserControllerImpl实现类,若要使用userService中的函数，仅需要在userService上添加@Reference注解，然后就像调用本地函数一样使用userService即可。
 
