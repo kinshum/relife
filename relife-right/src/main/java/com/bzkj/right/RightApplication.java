@@ -1,0 +1,1 @@
+package com.bzkj.right;import org.springframework.boot.autoconfigure.SpringBootApplication;/** * @description: * @author: jensen * @date: created by 2019/9/16 13:11 */@SpringBootApplicationpublic class RightApplication {}

@@ -6,7 +6,7 @@
 
     <groupId>com.bzkj</groupId>
     <artifactId>relife-facade</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>relife-facade</name>

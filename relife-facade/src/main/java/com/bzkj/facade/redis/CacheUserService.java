@@ -1,0 +1,1 @@
+package com.bzkj.facade.redis;import com.bzkj.dto.UserInfo;/** * 用户服务接口 */public interface CacheUserService {    UserInfo getUserInfo(String token);    UserInfo cacheKeep(String token);    void cache(String token, UserInfo userInfo);}
