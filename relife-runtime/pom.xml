@@ -6,24 +6,27 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>relife-runtime</artifactId>
     <groupId>com.bzkj</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
 
     <parent>
         <artifactId>relife</artifactId>
         <groupId>com.bzkj</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 
     <dependencies>
+
+        <!-- Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- KAFKA -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
