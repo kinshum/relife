@@ -117,7 +117,6 @@
             <groupId>io.dubbo.springboot</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
             <version>1.0.0</version>
-            <!--由于其内置dubbo版本太低 去除com.alibaba dubbo依赖 解决集成mybatis plus 后 无法提供服务问题-->
             <exclusions>
                 <exclusion>
                     <groupId>com.alibaba</groupId>
@@ -125,6 +124,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -154,7 +154,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
 
         <dependency>
             <groupId>com.101tec</groupId>

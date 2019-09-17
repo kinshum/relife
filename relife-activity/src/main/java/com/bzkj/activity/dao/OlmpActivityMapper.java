@@ -1,7 +1,6 @@
 package com.bzkj.activity.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.bzkj.dto.activity.InvitationActivity;
 import com.bzkj.entity.activity.OlmpActivityWithBLOBs;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

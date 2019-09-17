@@ -39,7 +39,6 @@
         <module>relife-activity</module>
         <module>relife-runtime</module>
         <module>relife-right</module>
-        <module>relife-finance</module>
     </modules>
 
     <dependencies>
