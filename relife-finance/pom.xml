@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bzkj</groupId>
+    <artifactId>relife-finance</artifactId>
+    <version>1.0.1</version>
+
+    <parent>
+        <artifactId>relife</artifactId>
+        <groupId>com.bzkj</groupId>
+        <version>1.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <name></name>
+    <description>金融gateway</description>
+
+
+    <dependencies>
+        <!-- 金融网关客户端(必选) -->
+        <dependency>
+            <groupId>com.baidu.fbu.msoa</groupId>
+            <artifactId>service-container</artifactId>
+            <version>${service.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.cal10n</groupId>
+                    <artifactId>cal10n-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.websocket</groupId>
+                    <artifactId>javax.websocket-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.jetty.websocket</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baixin.infra.utils</groupId>
+            <artifactId>request-head-generator</artifactId>
+            <version>1.1.0-GA</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baixin.infra.dc</groupId>
+            <artifactId>globaldate</artifactId>
+            <version>1.1.0-GA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>baixin.infra.utils</groupId>
+            <artifactId>global-uid-generator</artifactId>
+            <version>1.1.1-GA</version>
+        </dependency>
+
+
+        <!-- AFA 通讯相关 -->
+        <dependency>
+            <groupId>cn.com.agree.afa</groupId>
+            <artifactId>afa-tci</artifactId>
+            <version>${afa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.agree.afa</groupId>
+            <artifactId>afa-util</artifactId>
+            <version>${afa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.agree.afa</groupId>
+            <artifactId>afa-rpc</artifactId>
+            <version>${afa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.agree.afa</groupId>
+            <artifactId>afa-gateway-registry</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>asia.stampy</groupId>
+            <artifactId>stampy-core</artifactId>
+            <version>1.0-RELEASE</version>
+        </dependency>
+        <!--百信相关依赖 END -->
+    </dependencies>
+
+
+</project>
