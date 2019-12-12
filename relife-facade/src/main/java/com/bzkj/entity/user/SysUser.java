@@ -1,219 +1,119 @@
 package com.bzkj.entity.user;
 
-import java.io.Serializable;
+import com.bzkj.entity.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- * sys_user
- * @author 
- */
-public class SysUser implements Serializable {
-    /**
-     * 自增主键
-     */
-    private Long id;
+import java.util.Date;
 
-    /**
-     * 客户id
-     */
-    private String userId;
+public class SysUser extends BaseEntity<Long> {
 
-    /**
-     * 年龄
-     */
-    private Integer age;
+	private static final long serialVersionUID = -6525908145032868837L;
 
-    /**
-     * 创建时间
-     */
-    private String createTime;
+	private String username;
+	private String password;
+	private String nickname;
+	private String headImgUrl;
+	private String phone;
+	private String telephone;
+	private String email;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date birthday;
+	private Integer sex;
+	private Integer status;
+	private String intro;
 
-    /**
-     * 创建者
-     */
-    private String creator;
+	public String getUsername() {
+		return username;
+	}
 
-    /**
-     * 租户号
-     */
-    private String eId;
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    /**
-     * 锁定状态 ，0正常，1锁定
-     */
-    private Integer locked;
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * 登录名
-     */
-    private String loginName;
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    /**
-     * 用户名称
-     */
-    private String userName;
+	public String getNickname() {
+		return nickname;
+	}
 
-    /**
-     * 所属机构id
-     */
-    private String organizationId;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
-    /**
-     * 密码
-     */
-    private String password;
+	public String getHeadImgUrl() {
+		return headImgUrl;
+	}
 
-    /**
-     * 手机号
-     */
-    private String phone;
+	public void setHeadImgUrl(String headImgUrl) {
+		this.headImgUrl = headImgUrl;
+	}
 
-    /**
-     * 微信用户性别
-     */
-    private String sex;
+	public String getPhone() {
+		return phone;
+	}
 
-    /**
-     * 状态0失败1成功
-     */
-    private String status;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    /**
-     * 用户类别
-     */
-    private Integer userType;
+	public String getTelephone() {
+		return telephone;
+	}
 
-    /**
-     * 联系人
-     */
-    private String linkman;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
 
-    private static final long serialVersionUID = 1L;
+	public String getEmail() {
+		return email;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Date getBirthday() {
+		return birthday;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+	public Integer getSex() {
+		return sex;
+	}
 
-    public Integer getAge() {
-        return age;
-    }
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
-    public String getCreateTime() {
-        return createTime;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
+	public String getIntro() {
+		return intro;
+	}
 
-    public String getCreator() {
-        return creator;
-    }
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
 
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
+	public interface Status {
+		int DISABLED = 0;
+		int VALID = 1;
+		int LOCKED = 2;
+	}
 
-    public String geteId() {
-        return eId;
-    }
-
-    public void seteId(String eId) {
-        this.eId = eId;
-    }
-
-    public Integer getLocked() {
-        return locked;
-    }
-
-    public void setLocked(Integer locked) {
-        this.locked = locked;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
-
-    public String getLinkman() {
-        return linkman;
-    }
-
-    public void setLinkman(String linkman) {
-        this.linkman = linkman;
-    }
 }

@@ -37,9 +37,7 @@
         <module>relife-facade</module>
         <module>relife-controller</module>
         <module>relife-cms</module>
-        <module>relife-activity</module>
         <module>relife-runtime</module>
-        <module>relife-right</module>
     </modules>
 
     <dependencies>

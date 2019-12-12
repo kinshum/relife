@@ -1,1 +1,0 @@
-package com.bzkj.facade.finance;import com.bzkj.dto.finance.CustomerInfo;/** * @description: 三方金融服务 * @author: jensen * @date: created by 2019/9/17 10:25 */public interface FinanceChannelService {    CustomerInfo getCustomerInfoByToken(String token);}

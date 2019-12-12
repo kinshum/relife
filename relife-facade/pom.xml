@@ -17,8 +17,7 @@
     <packaging>jar</packaging>
 
     <name>relife-facade</name>
-    <description></description>
-
+    <description>facade</description>
 
 
     <properties>
@@ -44,6 +43,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.0</version>
         </dependency>
 
         <!-- MyBatis -->
@@ -115,6 +120,12 @@
             <version>1.2.31</version>
         </dependency>
 
+        <!-- secureity -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
 
         <!--dubbo-->
         <dependency>
@@ -177,6 +188,14 @@
                     <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-servlet_2.4_spec</artifactId>
+            <version>1.1.1</version>
+            <scope>provided</scope>
+
         </dependency>
 
 

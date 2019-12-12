@@ -1,1 +1,0 @@
-package com.bzkj.controller.activity.common;import io.swagger.annotations.Api;import org.springframework.web.bind.annotation.RequestMapping;/** * @description: * @author: jensen * @date: created by 2019/9/16 23:59 */@Api(tags = "Activity-CommonModule")@RequestMapping(value = "/api/v1/activity")public interface ActivityCommonController {}
