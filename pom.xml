@@ -3,12 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bzkj</groupId>
-    <artifactId>relife</artifactId>
-    <version>1.0.1</version>
-    <packaging>pom</packaging>
-
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -16,19 +10,27 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <groupId>com.bzkj</groupId>
+    <artifactId>relife</artifactId>
+    <version>1.0.1</version>
+    <packaging>pom</packaging>
 
     <name>relife</name>
-    <description>relife</description>
+    <description>Dubbo+微服务</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <facade.version>1.0.1</facade.version>
         <java.version>1.8</java.version>
         <gson.version>2.7</gson.version>
         <service.version>1.5.0-GA</service.version>
         <afa.version>2.6</afa.version>
         <msoa.version>1.5.0-GA</msoa.version>
+        <guava.version>20.0</guava.version>
+        <kafka.version>1.1.1.RELEASE</kafka.version>
         <skipTests>true</skipTests>
+
     </properties>
 
     <modules>
@@ -66,14 +68,14 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>20.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- relife-facade -->
         <dependency>
             <groupId>com.bzkj</groupId>
             <artifactId>relife-facade</artifactId>
-            <version>1.0.1</version>
+            <version>${facade.version}</version>
         </dependency>
     </dependencies>
 
