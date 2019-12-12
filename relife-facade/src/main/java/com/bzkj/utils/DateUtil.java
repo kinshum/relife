@@ -11,10 +11,6 @@ import java.util.*;
 
 /**
  * 日期工具类
- *
- * @author muxueliang
- * @date 2015年1月6日 下午4:43:53
- * @since 1.0.0
  */
 public class DateUtil {
     public static final String PATTERN_DATE_1 = "yyyy-MM-dd";
