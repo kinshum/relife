@@ -17,7 +17,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
- * spring security配置
+ * @description: spring security配置
+ * @author: jensen
+ * @date: created by 2019/12/14 14:56
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -54,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/v1/**"
                 )
                 .permitAll().anyRequest().authenticated();
-        http.formLogin().loginPage("/login.html").loginProcessingUrl("/login")
+        http.formLogin().loginProcessingUrl("/login")
                 .successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler).and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);

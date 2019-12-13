@@ -1,6 +1,5 @@
 package com.bzkj.filter;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.facade.token.TokenService;
 import org.apache.commons.lang3.StringUtils;

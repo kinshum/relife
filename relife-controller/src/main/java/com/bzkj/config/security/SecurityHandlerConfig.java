@@ -1,6 +1,5 @@
 package com.bzkj.config.security;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.config.ResponseUtil;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.dto.ResponseInfo;
@@ -26,7 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * spring security处理器
+ * @description: spring security处理器
+ * @author: jensen
+ * @date: created by 2019/12/14 14:55
  */
 @Configuration
 public class SecurityHandlerConfig {
