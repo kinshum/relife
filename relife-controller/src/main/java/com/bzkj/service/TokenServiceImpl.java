@@ -1,4 +1,4 @@
-package com.bzkj.cms.service;
+package com.bzkj.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -14,7 +14,7 @@ import org.springframework.util.StringUtils;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Service(interfaceClass = TokenService.class)
+
 @org.springframework.stereotype.Service
 public class TokenServiceImpl implements TokenService {
 
@@ -27,7 +27,7 @@ public class TokenServiceImpl implements TokenService {
     @Reference
     private RedisService redisService;
 
-    @Autowired
+    @Reference
     private SysLogService logService;
 
     @Override

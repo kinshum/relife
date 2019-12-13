@@ -5,6 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @description: Response 工具
+ * @author: jensen
+ * @date: created by 2019/9/12 15:28
+ */
 public class ResponseUtil {
 
 	public static void responseJson(HttpServletResponse response, int status, Object data) {

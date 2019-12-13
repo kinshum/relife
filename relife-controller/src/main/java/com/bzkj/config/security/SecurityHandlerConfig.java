@@ -8,6 +8,7 @@ import com.bzkj.dto.Token;
 import com.bzkj.facade.token.TokenService;
 import com.bzkj.filter.TokenFilter;
 import com.bzkj.rsp.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,10 @@ import java.io.IOException;
 @Configuration
 public class SecurityHandlerConfig {
 
-	@Reference
+	@Autowired
 	private TokenService tokenService;
+
+
 
 	/**
 	 * 登陆成功，返回Token
@@ -47,7 +50,7 @@ public class SecurityHandlerConfig {
 					Authentication authentication) throws IOException, ServletException {
 				LoginUser loginUser = (LoginUser) authentication.getPrincipal();
 				Token token = tokenService.saveToken(loginUser);
-				Result.newSuccessResult(token);
+				ResponseUtil.responseJson(response, HttpStatus.OK.value(), Result.newSuccessResult(token));
 			}
 		};
 	}
