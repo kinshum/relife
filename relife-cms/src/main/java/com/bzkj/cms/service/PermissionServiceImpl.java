@@ -1,4 +1,4 @@
-package com.bzkj.cms.service.permission;
+package com.bzkj.cms.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.cms.dao.PermissionDao;

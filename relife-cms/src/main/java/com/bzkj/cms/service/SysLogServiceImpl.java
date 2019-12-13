@@ -1,4 +1,4 @@
-package com.bzkj.cms.service.log;
+package com.bzkj.cms.service;
 
 
 import com.alibaba.dubbo.config.annotation.Service;
