@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/statics/**"
                 )
                 .permitAll().anyRequest().authenticated();
-        http.formLogin().loginProcessingUrl("/login")
+        http.formLogin().loginProcessingUrl("/api/login")
                 .successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler).and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         http.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
