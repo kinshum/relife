@@ -1,13 +1,11 @@
-package com.bzkj.config.security;
+package com.bzkj.config;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.bzkj.config.ResponseUtil;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.dto.ResponseInfo;
 import com.bzkj.dto.Token;
 import com.bzkj.facade.token.TokenService;
 import com.bzkj.filter.TokenFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
