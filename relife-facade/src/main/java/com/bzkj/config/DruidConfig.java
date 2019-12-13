@@ -23,7 +23,7 @@ import java.sql.SQLException;
 @Configuration
 public class DruidConfig {
 
-	private static final Logger log = LoggerFactory.getLogger("adminLogger");
+	private static final Logger log = LoggerFactory.getLogger("controllerLogger");
 
 	@Bean
 	public ServletRegistrationBean druidServlet() {

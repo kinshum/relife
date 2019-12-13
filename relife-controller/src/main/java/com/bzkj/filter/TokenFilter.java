@@ -54,7 +54,6 @@ public class TokenFilter extends OncePerRequestFilter {
         if (StringUtils.isBlank(token)) {
             token = request.getHeader(TOKEN_KEY);
         }
-
         return token;
     }
 
