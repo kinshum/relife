@@ -36,11 +36,9 @@ public class TokenServiceImpl implements TokenService {
         if (StringUtils.isEmpty(token)) {
             token = UUID.randomUUID().toString();
         }
-
         loginUser.setToken(token);
         updateLoginUser(loginUser);
         logService.save(loginUser.getId(), "登陆", true, null);
-
         return new Token(token);
     }
 

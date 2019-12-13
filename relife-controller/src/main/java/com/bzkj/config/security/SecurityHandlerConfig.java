@@ -7,6 +7,7 @@ import com.bzkj.dto.ResponseInfo;
 import com.bzkj.dto.Token;
 import com.bzkj.facade.token.TokenService;
 import com.bzkj.filter.TokenFilter;
+import com.bzkj.rsp.Result;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -45,9 +46,8 @@ public class SecurityHandlerConfig {
 			public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 					Authentication authentication) throws IOException, ServletException {
 				LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-
 				Token token = tokenService.saveToken(loginUser);
-				ResponseUtil.responseJson(response, HttpStatus.OK.value(), token);
+				Result.newSuccessResult(token);
 			}
 		};
 	}
