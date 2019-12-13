@@ -16,10 +16,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+
 /**
  * @description: spring security配置
  * @author: jensen
- * @date: created by 2019/12/14 14:56
+ * @date: created by 2019/9/15 14:46
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -52,8 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/*.html", "/favicon.ico", "/css/**", "/js/**", "/fonts/**", "/layui/**", "/img/**",
                         "/v2/api-docs/**", "/swagger-resources/**", "/webjars/**", "/pages/**", "/druid/**",
-                        "/statics/**",
-                        "/api/v1/**"
+                        "/statics/**"
                 )
                 .permitAll().anyRequest().authenticated();
         http.formLogin().loginProcessingUrl("/login")
