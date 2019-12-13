@@ -1,6 +1,5 @@
 package com.bzkj.cms.service;
 
-
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.dto.LoginUser;
@@ -15,7 +14,7 @@ import org.springframework.util.StringUtils;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Service(interfaceClass = TokenService.class, version = "1.0.0")
+@Service(interfaceClass = TokenService.class)
 @org.springframework.stereotype.Service
 public class TokenServiceImpl implements TokenService {
 
@@ -25,7 +24,7 @@ public class TokenServiceImpl implements TokenService {
     @Value("${token.expire.seconds}")
     private Integer expireSeconds;
 
-    @Reference(version = "1.0.0")
+    @Reference
     private RedisService redisService;
 
     @Autowired

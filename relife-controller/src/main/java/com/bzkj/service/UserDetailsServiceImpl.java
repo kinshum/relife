@@ -24,10 +24,10 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Reference(version = "1.0.0")
+    @Reference
     private UserService userService;
 
-    @Reference(version = "1.0.0")
+    @Reference
     private PermissionService permissionService;
 
     @Override

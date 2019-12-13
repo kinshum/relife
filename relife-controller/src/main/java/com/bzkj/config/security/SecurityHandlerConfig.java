@@ -29,7 +29,7 @@ import java.io.IOException;
 @Configuration
 public class SecurityHandlerConfig {
 
-	@Reference(version = "1.0.0")
+	@Reference
 	private TokenService tokenService;
 
 	/**

@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.Async;
 
 import java.util.Date;
 
-@Service(interfaceClass = SysLogService.class,version = "1.0.0")
+@Service(interfaceClass = SysLogService.class)
 @org.springframework.stereotype.Service
 public class SysLogServiceImpl implements SysLogService {
 

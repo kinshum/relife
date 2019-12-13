@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-@Service(version = "1.0.0",interfaceClass = PermissionService.class)
+@Service(interfaceClass = PermissionService.class)
 public class PermissionServiceImpl implements PermissionService {
 
     @Autowired

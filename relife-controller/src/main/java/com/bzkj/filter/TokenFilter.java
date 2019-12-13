@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.facade.token.TokenService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -24,7 +23,7 @@ public class TokenFilter extends OncePerRequestFilter {
 
     private static final String TOKEN_KEY = "token";
 
-    @Reference(version = "1.0.0")
+    @Reference
     private TokenService tokenService;
 
     @Override
