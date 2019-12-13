@@ -1,6 +1,7 @@
-package com.bzkj.config;
+package com.bzkj.config.security;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.bzkj.config.ResponseUtil;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.dto.ResponseInfo;
 import com.bzkj.dto.Token;

@@ -1,6 +1,5 @@
 package com.bzkj.config.security;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.filter.TokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +15,6 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.stereotype.Component;
 
 /**
  * spring security配置
@@ -32,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private LogoutSuccessHandler logoutSuccessHandler;
     @Autowired
     private AuthenticationEntryPoint authenticationEntryPoint;
-    @Reference(group = "userDetailsServiceImpl")
+    @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
     private TokenFilter tokenFilter;

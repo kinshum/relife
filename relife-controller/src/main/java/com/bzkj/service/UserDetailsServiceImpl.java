@@ -1,10 +1,12 @@
-package com.bzkj.cms.service.user;
+package com.bzkj.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.bzkj.cms.dao.PermissionDao;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+
 import com.bzkj.dto.LoginUser;
 import com.bzkj.entity.Permission;
 import com.bzkj.entity.user.SysUser;
+import com.bzkj.facade.permission.PermissionService;
 import com.bzkj.facade.user.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +16,19 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service(group = "userDetailsServiceImpl")
-@Component
+
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
+    @Reference(version = "1.0.0")
     private UserService userService;
-    @Autowired
-    private PermissionDao permissionDao;
+
+    @Reference(version = "1.0.0")
+    private PermissionService permissionService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -41,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         LoginUser loginUser = new LoginUser();
         BeanUtils.copyProperties(sysUser, loginUser);
 
-        List<Permission> permissions = permissionDao.listByUserId(sysUser.getId());
+        List<Permission> permissions = permissionService.listByUserId(sysUser.getId());
         loginUser.setPermissions(permissions);
 
         return loginUser;
