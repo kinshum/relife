@@ -7,7 +7,6 @@ import com.bzkj.dto.Token;
 import com.bzkj.facade.cms.SysLogService;
 import com.bzkj.facade.runtime.RedisService;
 import com.bzkj.facade.security.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 
@@ -16,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @org.springframework.stereotype.Service
+@Service(interfaceClass = TokenService.class)
 public class TokenServiceImpl implements TokenService {
 
     /**

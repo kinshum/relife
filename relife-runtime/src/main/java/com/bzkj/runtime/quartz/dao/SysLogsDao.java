@@ -1,4 +1,4 @@
-package com.bzkj.cms.dao;
+package com.bzkj.runtime.quartz.dao;
 
 import com.bzkj.entity.SysLogs;
 import org.apache.ibatis.annotations.Delete;
