@@ -1,0 +1,1 @@
+package com.bzkj.facade.runtime;import com.bzkj.rsp.Result;/** * @description: * @author: jensen * @date: created by 2019/9/15 13:28 */public interface KafkaService {    Result send(String msg);}

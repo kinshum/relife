@@ -1,4 +1,4 @@
-package com.bzkj.facade.permission;
+package com.bzkj.facade.cms;
 
 import com.bzkj.entity.Permission;
 

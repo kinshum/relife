@@ -1,4 +1,4 @@
-package com.bzkj.facade.token;
+package com.bzkj.facade.security;
 
 import com.bzkj.dto.LoginUser;
 import com.bzkj.dto.Token;
