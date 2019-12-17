@@ -6,8 +6,9 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.entity.Permission;
 import com.bzkj.entity.user.SysUser;
-import com.bzkj.facade.permission.PermissionService;
-import com.bzkj.facade.user.UserService;
+
+import com.bzkj.facade.cms.PermissionService;
+import com.bzkj.facade.cms.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;

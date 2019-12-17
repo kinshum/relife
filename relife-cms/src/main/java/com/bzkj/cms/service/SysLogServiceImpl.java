@@ -5,7 +5,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.cms.dao.SysLogsDao;
 import com.bzkj.entity.SysLogs;
 import com.bzkj.entity.user.SysUser;
-import com.bzkj.facade.syslog.SysLogService;
+import com.bzkj.facade.cms.SysLogService;
 import com.bzkj.utils.UserUtil;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;

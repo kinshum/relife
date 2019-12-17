@@ -3,7 +3,7 @@ package com.bzkj.cms.service;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.cms.dao.PermissionDao;
 import com.bzkj.entity.Permission;
-import com.bzkj.facade.permission.PermissionService;
+import com.bzkj.facade.cms.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

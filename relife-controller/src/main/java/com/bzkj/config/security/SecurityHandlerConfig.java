@@ -4,7 +4,7 @@ import com.bzkj.config.ResponseUtil;
 import com.bzkj.dto.LoginUser;
 import com.bzkj.dto.ResponseInfo;
 import com.bzkj.dto.Token;
-import com.bzkj.facade.token.TokenService;
+import com.bzkj.facade.security.TokenService;
 import com.bzkj.filter.TokenFilter;
 import com.bzkj.rsp.Result;
 import org.springframework.beans.factory.annotation.Autowired;
