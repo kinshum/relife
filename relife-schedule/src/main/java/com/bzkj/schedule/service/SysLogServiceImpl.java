@@ -1,11 +1,10 @@
-package com.bzkj.runtime.quartz.service;
-
+package com.bzkj.schedule.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.entity.SysLogs;
 import com.bzkj.entity.user.SysUser;
 import com.bzkj.facade.cms.SysLogService;
-import com.bzkj.runtime.quartz.dao.SysLogsDao;
+import com.bzkj.schedule.dao.SysLogsDao;
 import com.bzkj.utils.UserUtil;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -19,8 +18,7 @@ import java.util.Date;
 @Service(interfaceClass = SysLogService.class)
 @org.springframework.stereotype.Service
 public class SysLogServiceImpl implements SysLogService {
-
-    private static final Logger logger = LoggerFactory.getLogger("cmsLogger");
+    private static final Logger logger = LoggerFactory.getLogger("scheduleLogger");
 
     @Autowired
     private SysLogsDao sysLogsDao;
@@ -31,6 +29,7 @@ public class SysLogServiceImpl implements SysLogService {
         if (user == null || user.getId() == null) {
             return;
         }
+
         sysLogs.setUser(user);
         sysLogsDao.save(sysLogs);
     }
@@ -55,6 +54,7 @@ public class SysLogServiceImpl implements SysLogService {
     public void deleteLogs() {
         Date date = DateUtils.addMonths(new Date(), -3);
         String time = DateFormatUtils.format(date, DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.getPattern());
+
         int n = sysLogsDao.deleteLogs(time);
         logger.info("删除{}之前日志{}条", time, n);
     }

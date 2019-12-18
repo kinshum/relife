@@ -38,6 +38,7 @@
         <module>relife-controller</module>
         <module>relife-cms</module>
         <module>relife-runtime</module>
+        <module>relife-schedule</module>
     </modules>
 
     <dependencies>
@@ -68,6 +69,12 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
 
         <!-- relife-facade -->
         <dependency>
