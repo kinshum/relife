@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/*.html", "/favicon.ico", "/css/**", "/js/**", "/fonts/**", "/layui/**", "/img/**",
                         "/v2/api-docs/**", "/swagger-resources/**", "/webjars/**", "/pages/**", "/druid/**",
-                        "/statics/**","/docs"
+                        "/statics/**","/docs","/quartz/**"
                 )
                 .permitAll().anyRequest().authenticated();
         http.formLogin().loginProcessingUrl("/api/login")

@@ -35,8 +35,6 @@ public class SecurityHandlerConfig {
 	@Autowired
 	private TokenService tokenService;
 
-
-
 	/**
 	 * 登陆成功，返回Token
 	 * 

@@ -1,4 +1,5 @@
-package com.bzkj.schedule.dao;
+package com.bzkj.cms.dao;
+
 
 import com.bzkj.entity.SysLogs;
 import org.apache.ibatis.annotations.Delete;
@@ -18,7 +19,7 @@ public interface SysLogsDao {
 	int count(@Param("params") Map<String, Object> params);
 
 	List<SysLogs> list(@Param("params") Map<String, Object> params, @Param("offset") Integer offset,
-                       @Param("limit") Integer limit);
+					   @Param("limit") Integer limit);
 
 	@Delete("delete from sys_logs where createTime <= #{time}")
 	int deleteLogs(String time);

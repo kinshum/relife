@@ -66,6 +66,9 @@
 	</appender>
 
 
+	<logger name="com.bzkj.schedule.dao" level="DEBUG" additivity="true">
+		<appender-ref ref="sqlLog" />
+	</logger>
 
 	<root level="${rootlevel}">
 		<appender-ref ref="STDOUT" />
