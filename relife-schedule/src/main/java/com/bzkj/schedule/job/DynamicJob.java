@@ -1,6 +1,6 @@
 package com.bzkj.schedule.job;
 
-import com.bzkj.schedule.util.StringUtil;
+import com.bzkj.utils.StringUtil;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
