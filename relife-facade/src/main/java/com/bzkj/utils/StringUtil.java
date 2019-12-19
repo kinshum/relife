@@ -1,4 +1,4 @@
-package com.bzkj.schedule.util;
+package com.bzkj.utils;
 
 import java.util.List;
 
