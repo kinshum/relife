@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-public class RunTimesApplication extends SpringBootServletInitializer {
+public class RunTimeApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(RunTimesApplication.class);
+        SpringApplication springApplication = new SpringApplication(RunTimeApplication.class);
         springApplication.run(args);
     }
     @Override//为了打包springboot项目
