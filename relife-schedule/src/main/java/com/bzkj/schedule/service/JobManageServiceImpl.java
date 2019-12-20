@@ -1,16 +1,12 @@
 package com.bzkj.schedule.service;
 
-
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.constants.GlobalConstants;
 import com.bzkj.facade.schedule.JobManageService;
-
 import com.bzkj.schedule.job.JobUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import javax.annotation.Resource;
 
 @org.springframework.stereotype.Service
