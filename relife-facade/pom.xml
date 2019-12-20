@@ -106,7 +106,6 @@
             <version>${gson.version}</version>
         </dependency>
 
-
         <!-- okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -125,7 +124,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
 
         <!--dubbo-->
         <dependency>

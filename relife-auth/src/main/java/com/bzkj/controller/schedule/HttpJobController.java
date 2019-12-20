@@ -2,6 +2,7 @@ package com.bzkj.controller.schedule;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.fastjson.JSON;
 import com.bzkj.controller.base.BaseController;
 import com.bzkj.entity.HttpJobLogs;
 import com.bzkj.entity.Page;
@@ -38,6 +39,7 @@ public class HttpJobController extends BaseController {
                                                  @RequestParam(name = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
 
         Page<HttpJobDetailVO> result = httpJobService.getHttpJobs(searchParam, pageSize, pageNum);
+        System.out.println(JSON.toJSONString(result));
         return Response.success(result);
     }
 

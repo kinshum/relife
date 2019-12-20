@@ -1,6 +1,7 @@
 package com.bzkj.entity.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,10 +22,8 @@ public class HttpJobDetailVO implements Serializable {
 
     private String httpParams;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date nextFireTime;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String cronExpression;
@@ -85,6 +84,7 @@ public class HttpJobDetailVO implements Serializable {
         this.httpParams = httpParams;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getNextFireTime() {
         return nextFireTime;
     }
@@ -93,6 +93,7 @@ public class HttpJobDetailVO implements Serializable {
         this.nextFireTime = nextFireTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }

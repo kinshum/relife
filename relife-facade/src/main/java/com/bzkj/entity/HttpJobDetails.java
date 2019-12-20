@@ -1,6 +1,7 @@
 package com.bzkj.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,10 +24,8 @@ public class HttpJobDetails implements Serializable {
 
     private String httpParams;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public Integer getId() {
@@ -85,6 +84,8 @@ public class HttpJobDetails implements Serializable {
         this.httpParams = httpParams;
     }
 
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getCreateTime() {
         return createTime;
     }
@@ -93,6 +94,7 @@ public class HttpJobDetails implements Serializable {
         this.createTime = createTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getUpdateTime() {
         return updateTime;
     }
