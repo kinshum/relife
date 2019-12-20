@@ -2,6 +2,7 @@ package com.bzkj.controller.schedule;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.bzkj.controller.base.BaseController;
 import com.bzkj.facade.schedule.JobManageService;
 import com.bzkj.rsp.Response;
 import com.bzkj.rsp.Result;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/quartz/job")
-public class JobController {
+public class JobController extends BaseController {
 
     @Reference
     private JobManageService jobManageService;

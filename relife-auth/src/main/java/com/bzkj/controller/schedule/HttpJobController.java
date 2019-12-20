@@ -2,6 +2,7 @@ package com.bzkj.controller.schedule;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.bzkj.controller.base.BaseController;
 import com.bzkj.entity.HttpJobLogs;
 import com.bzkj.entity.Page;
 import com.bzkj.entity.param.AddHttpJobParam;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/quartz/httpJob")
-public class HttpJobController {
+public class HttpJobController extends BaseController {
 
     @Reference
     private HttpJobService httpJobService;

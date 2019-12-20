@@ -13,7 +13,7 @@
 		</encoder>
 	</appender>
 
-	<appender name="controllerLog"
+	<appender name="authLog"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${logFile}</file>
 		<encoder>
@@ -60,8 +60,8 @@
 		</rollingPolicy>
 	</appender>-->
 
-	<logger name="controllerLogger" level="${mylevel}" additivity="true">
-		<appender-ref ref="controllerLog" />
+	<logger name="authLogger" level="${mylevel}" additivity="true">
+		<appender-ref ref="authLog" />
 	</logger>
 
 	<!--<logger name="com.bazk.dao" level="DEBUG" additivity="true">

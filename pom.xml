@@ -35,10 +35,11 @@
 
     <modules>
         <module>relife-facade</module>
-        <module>relife-controller</module>
+        <module>relife-auth</module>
         <module>relife-cms</module>
         <module>relife-runtime</module>
         <module>relife-schedule</module>
+        <module>relife-gateway</module>
     </modules>
 
     <dependencies>
