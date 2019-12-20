@@ -39,7 +39,6 @@ public class HttpJobController extends BaseController {
                                                  @RequestParam(name = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
 
         Page<HttpJobDetailVO> result = httpJobService.getHttpJobs(searchParam, pageSize, pageNum);
-        System.out.println(JSON.toJSONString(result));
         return Response.success(result);
     }
 
