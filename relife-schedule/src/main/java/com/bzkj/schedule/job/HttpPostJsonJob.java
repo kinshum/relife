@@ -3,7 +3,8 @@ package com.bzkj.schedule.job;
 
 import com.bzkj.constants.GlobalConstants;
 import com.bzkj.entity.HttpJobLogs;
-import com.bzkj.schedule.dao.HttpJobLogsMapper;
+
+import com.bzkj.schedule.dao.HttpJobLogsDao;
 import com.bzkj.utils.HttpClientUtil;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
@@ -21,7 +22,7 @@ public class HttpPostJsonJob implements Job {
     private static final Logger logger = LoggerFactory.getLogger(HttpPostJsonJob.class);
 
     @Autowired
-    private HttpJobLogsMapper httpJobLogsMapper;
+    private HttpJobLogsDao httpJobLogsDao;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
@@ -41,13 +42,10 @@ public class HttpPostJsonJob implements Job {
         httpJobLogs.setRequestType(requestType);
         httpJobLogs.setHttpUrl(url);
         httpJobLogs.setHttpParams(jsonParam);
-
         String result = HttpClientUtil.postJson(url, jsonParam);
         httpJobLogs.setResult(result);
-
         logger.info("Success in execute [{}_{}]", jobName, jobGroup);
-
-        httpJobLogsMapper.insertSelective(httpJobLogs);
+        httpJobLogsDao.insertSelective(httpJobLogs);
     }
 
 }

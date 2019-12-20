@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface HttpJobDetailsMapper {
+public interface HttpJobDetailsDao {
 
     HttpJobDetails selectByJobNameAndJobGroup(@Param("jobName") String jobName, @Param("jobGroup") String jobGroup);
 

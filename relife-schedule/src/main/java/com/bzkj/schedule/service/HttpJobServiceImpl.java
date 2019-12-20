@@ -11,12 +11,13 @@ import com.bzkj.entity.param.AddHttpJobParam;
 import com.bzkj.entity.vo.HttpJobDetailVO;
 import com.bzkj.facade.schedule.HttpJobService;
 
+import com.bzkj.schedule.dao.HttpJobLogsDao;
 import com.bzkj.schedule.job.HttpGetJob;
 import com.bzkj.schedule.job.HttpPostFormDataJob;
 import com.bzkj.schedule.job.HttpPostJsonJob;
 import com.bzkj.schedule.job.JobUtil;
-import com.bzkj.schedule.dao.HttpJobDetailsMapper;
-import com.bzkj.schedule.dao.HttpJobLogsMapper;
+import com.bzkj.schedule.dao.HttpJobDetailsDao;
+
 
 import com.bzkj.utils.JsonValidUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -49,10 +50,10 @@ public class HttpJobServiceImpl implements HttpJobService {
     private Scheduler scheduler;
 
     @Autowired
-    private HttpJobLogsMapper httpJobLogsMapper;
+    private HttpJobLogsDao httpJobLogsDao;
 
     @Autowired
-    private HttpJobDetailsMapper httpJobDetailsMapper;
+    private HttpJobDetailsDao httpJobDetailsDao;
 
     @Resource
     private JobUtil jobUtil;
@@ -63,7 +64,7 @@ public class HttpJobServiceImpl implements HttpJobService {
 
         String jobName = addHttpJobParam.getJobName();
         String jobGroup = addHttpJobParam.getJobGroup();
-        HttpJobDetails httpJobDetails = httpJobDetailsMapper.selectByJobNameAndJobGroup(jobName, jobGroup);
+        HttpJobDetails httpJobDetails = httpJobDetailsDao.selectByJobNameAndJobGroup(jobName, jobGroup);
         if (httpJobDetails != null) {
             //通过jobName和jobGroup确保任务的唯一性
             throw new RuntimeException("任务名称重复!");
@@ -172,7 +173,7 @@ public class HttpJobServiceImpl implements HttpJobService {
             throw new RuntimeException("Schedule Exception.", e);
         }
 
-        httpJobDetailsMapper.insertSelective(httpJobDetails);
+        httpJobDetailsDao.insertSelective(httpJobDetails);
         logger.info("Success in addJob, [{}]-[{}]", jobName, jobGroup);
 
     }
@@ -186,7 +187,7 @@ public class HttpJobServiceImpl implements HttpJobService {
         sqlMap.put("pageSize", pageSize);
         sqlMap.put("beginIndex", beginIndex);
 
-        List<HttpJobDetailVO> httpJobDetailVOList = httpJobDetailsMapper.selectHttpJobs(sqlMap);
+        List<HttpJobDetailVO> httpJobDetailVOList = httpJobDetailsDao.selectHttpJobs(sqlMap);
 
         for (HttpJobDetailVO httpJobDetailVO : httpJobDetailVOList) {
             //设置jobStatusInfo
@@ -202,9 +203,8 @@ public class HttpJobServiceImpl implements HttpJobService {
         httpJobDetailVOPageVO.setPageNum(pageNum);
         httpJobDetailVOPageVO.setPageSize(pageSize);
         httpJobDetailVOPageVO.setCount(httpJobDetailVOList.size());
-        httpJobDetailVOPageVO.setTotalCount(httpJobDetailsMapper.selectHttpJobsCount(sqlMap));
+        httpJobDetailVOPageVO.setTotalCount(httpJobDetailsDao.selectHttpJobsCount(sqlMap));
         httpJobDetailVOPageVO.setResultList(httpJobDetailVOList);
-
         return httpJobDetailVOPageVO;
     }
 
@@ -217,13 +217,13 @@ public class HttpJobServiceImpl implements HttpJobService {
         sqlMap.put("pageSize", pageSize);
         sqlMap.put("beginIndex", beginIndex);
 
-        List<HttpJobDetailVO> httpJobDetailVOList = httpJobDetailsMapper.selectHistoryHttpJobs(sqlMap);
+        List<HttpJobDetailVO> httpJobDetailVOList = httpJobDetailsDao.selectHistoryHttpJobs(sqlMap);
 
         Page<HttpJobDetailVO> httpJobDetailVOPageVO = new Page<>();
         httpJobDetailVOPageVO.setPageNum(pageNum);
         httpJobDetailVOPageVO.setPageSize(pageSize);
         httpJobDetailVOPageVO.setCount(httpJobDetailVOList.size());
-        httpJobDetailVOPageVO.setTotalCount(httpJobDetailsMapper.selectHistoryHttpJobsCount(sqlMap));
+        httpJobDetailVOPageVO.setTotalCount(httpJobDetailsDao.selectHistoryHttpJobsCount(sqlMap));
         httpJobDetailVOPageVO.setResultList(httpJobDetailVOList);
 
         return httpJobDetailVOPageVO;
@@ -240,13 +240,13 @@ public class HttpJobServiceImpl implements HttpJobService {
         sqlMap.put("pageSize", pageSize);
         sqlMap.put("beginIndex", beginIndex);
 
-        List<HttpJobLogs> httpJobLogsList = httpJobLogsMapper.selectHttpJobLogs(sqlMap);
+        List<HttpJobLogs> httpJobLogsList = httpJobLogsDao.selectHttpJobLogs(sqlMap);
 
         Page<HttpJobLogs> httpJobDetailVOPageVO = new Page<>();
         httpJobDetailVOPageVO.setPageNum(pageNum);
         httpJobDetailVOPageVO.setPageSize(pageSize);
         httpJobDetailVOPageVO.setCount(httpJobLogsList.size());
-        httpJobDetailVOPageVO.setTotalCount(httpJobLogsMapper.selectHttpJobLogsCount(sqlMap));
+        httpJobDetailVOPageVO.setTotalCount(httpJobLogsDao.selectHttpJobLogsCount(sqlMap));
         httpJobDetailVOPageVO.setResultList(httpJobLogsList);
 
         return httpJobDetailVOPageVO;

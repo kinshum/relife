@@ -1,25 +1,36 @@
 package com.bzkj.controller.schedule;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.bzkj.controller.base.BaseController;
+import com.bzkj.entity.SysLogs;
+import com.bzkj.facade.cms.SysLogService;
 import com.bzkj.facade.schedule.JobManageService;
+
+import com.bzkj.rsp.Response;
+import com.bzkj.utils.JsonUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/quartz/test")
-public class TestController {
+public class TestController extends BaseController {
 
 
     @Reference
     private JobManageService jobManageService;
 
+    @Reference
+    private SysLogService logService;
 
-    @GetMapping(value = "/get")
-    public String test(@RequestParam("id") String id) {
-        System.out.println(">>>>>>>>>"+id);
-        return "测试id:"+id;
+    @GetMapping(value = "/logList")
+    public Response getLogList(@RequestParam("limit") int limit) {
+        List<SysLogs> logList = logService.getLogList(limit);
+        logger.info("定时任务返回参数->{}",JsonUtil.getJsonString(logList));
+        return Response.success();
     }
 
 

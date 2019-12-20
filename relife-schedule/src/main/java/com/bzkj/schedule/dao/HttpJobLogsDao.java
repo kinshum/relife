@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface HttpJobLogsMapper {
+public interface HttpJobLogsDao {
 
     int insertSelective(HttpJobLogs httpJobLogs);
 

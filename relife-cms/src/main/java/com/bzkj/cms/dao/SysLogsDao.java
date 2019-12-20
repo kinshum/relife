@@ -2,10 +2,7 @@ package com.bzkj.cms.dao;
 
 
 import com.bzkj.entity.SysLogs;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -23,4 +20,7 @@ public interface SysLogsDao {
 
 	@Delete("delete from sys_logs where createTime <= #{time}")
 	int deleteLogs(String time);
+
+	@Select("SELECT * from sys_logs s  LIMIT 1,#{limit}")
+	List<SysLogs> listLog(@Param("limit") int limit);
 }
