@@ -1,12 +1,8 @@
-package com.bzkj.schedule.job;
-
+package com.bzkj.runtime.schedule.job;
 
 import com.bzkj.constants.GlobalConstants;
-
 import com.bzkj.entity.HttpJobLogs;
-
-
-import com.bzkj.schedule.dao.HttpJobLogsDao;
+import com.bzkj.runtime.schedule.dao.HttpJobLogsDao;
 import com.bzkj.utils.HttpClientUtil;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
@@ -19,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Map;
 
 @DisallowConcurrentExecution
-public class HttpGetJob implements Job {
+public class HttpPostFormDataJob implements Job {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpPostJsonJob.class);
 
@@ -36,17 +32,18 @@ public class HttpGetJob implements Job {
 
         String requestType = (String) jobParamsMap.get(GlobalConstants.REQUEST_TYPE);
         String url = (String) jobParamsMap.get(GlobalConstants.URL);
-        Map<String, Object> paramMap = (Map) jobParamsMap.get(GlobalConstants.PARAMS);
+        Map<String, Object> formDataParamMap = (Map) jobParamsMap.get(GlobalConstants.PARAMS);
 
         HttpJobLogs httpJobLogs = new HttpJobLogs();
         httpJobLogs.setJobName(jobName);
         httpJobLogs.setJobGroup(jobGroup);
         httpJobLogs.setRequestType(requestType);
         httpJobLogs.setHttpUrl(url);
-        if (null != paramMap && paramMap.size() > 0) {
-            httpJobLogs.setHttpParams(paramMap.toString());
+        if (null != formDataParamMap && formDataParamMap.size() > 0) {
+            httpJobLogs.setHttpParams(formDataParamMap.toString());
         }
-        String result = HttpClientUtil.getMap(url, paramMap);
+
+        String result = HttpClientUtil.postFormData(url, formDataParamMap);
         httpJobLogs.setResult(result);
         logger.info("Success in execute [{}_{}]", jobName, jobGroup);
         httpJobLogsDao.insertSelective(httpJobLogs);

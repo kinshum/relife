@@ -1,8 +1,7 @@
-package com.bzkj.schedule.service;
+package com.bzkj.runtime.schedule.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
-
 import com.bzkj.constants.GlobalConstants;
 import com.bzkj.entity.HttpJobDetails;
 import com.bzkj.entity.HttpJobLogs;
@@ -10,25 +9,20 @@ import com.bzkj.entity.Page;
 import com.bzkj.entity.param.AddHttpJobParam;
 import com.bzkj.entity.vo.HttpJobDetailVO;
 import com.bzkj.facade.schedule.HttpJobService;
-
-import com.bzkj.schedule.dao.HttpJobLogsDao;
-import com.bzkj.schedule.job.HttpGetJob;
-import com.bzkj.schedule.job.HttpPostFormDataJob;
-import com.bzkj.schedule.job.HttpPostJsonJob;
-import com.bzkj.schedule.job.JobUtil;
-import com.bzkj.schedule.dao.HttpJobDetailsDao;
-
-
+import com.bzkj.runtime.schedule.dao.HttpJobDetailsDao;
+import com.bzkj.runtime.schedule.dao.HttpJobLogsDao;
+import com.bzkj.runtime.schedule.job.HttpGetJob;
+import com.bzkj.runtime.schedule.job.HttpPostFormDataJob;
+import com.bzkj.runtime.schedule.job.HttpPostJsonJob;
+import com.bzkj.utils.JobUtil;
 import com.bzkj.utils.JsonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +35,7 @@ import java.util.Map;
  */
 
 @org.springframework.stereotype.Service
-@Service(interfaceClass = HttpJobService.class)
+@Service
 public class HttpJobServiceImpl implements HttpJobService {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpJobServiceImpl.class);
@@ -55,7 +49,7 @@ public class HttpJobServiceImpl implements HttpJobService {
     @Autowired
     private HttpJobDetailsDao httpJobDetailsDao;
 
-    @Resource
+    @Autowired
     private JobUtil jobUtil;
 
     @Override

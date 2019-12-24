@@ -1,22 +1,21 @@
-package com.bzkj.schedule.service;
+package com.bzkj.runtime.schedule.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.constants.GlobalConstants;
 import com.bzkj.facade.schedule.JobManageService;
-import com.bzkj.schedule.job.JobUtil;
+import com.bzkj.utils.JobUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.annotation.Resource;
 
 @org.springframework.stereotype.Service
-@Service(interfaceClass = JobManageService.class)
+@Service
 public class JobManageServiceImpl implements JobManageService {
 
     @Autowired
     private Scheduler scheduler;
 
-    @Resource
+    @Autowired
     private JobUtil jobUtil;
 
     @Override

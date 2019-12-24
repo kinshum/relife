@@ -1,4 +1,4 @@
-package com.bzkj.schedule.config.quartz;
+package com.bzkj.runtime.schedule.config.quartz;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;

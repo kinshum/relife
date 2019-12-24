@@ -1,8 +1,7 @@
-package com.bzkj.schedule.dao;
+package com.bzkj.runtime.schedule.dao;
 
 import com.bzkj.entity.HttpJobLogs;
 import org.apache.ibatis.annotations.Mapper;
-
 
 import java.util.List;
 import java.util.Map;

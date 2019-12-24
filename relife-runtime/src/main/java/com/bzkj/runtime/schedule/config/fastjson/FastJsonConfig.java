@@ -1,4 +1,4 @@
-package com.bzkj.schedule.config.fastjson;
+package com.bzkj.runtime.schedule.config.fastjson;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
