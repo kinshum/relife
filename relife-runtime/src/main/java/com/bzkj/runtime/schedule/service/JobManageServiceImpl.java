@@ -2,6 +2,7 @@ package com.bzkj.runtime.schedule.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.bzkj.constants.GlobalConstants;
+import com.bzkj.facade.schedule.HttpJobService;
 import com.bzkj.facade.schedule.JobManageService;
 import com.bzkj.utils.JobUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -9,7 +10,7 @@ import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Service
-@Service
+@Service(interfaceClass = JobManageService.class)
 public class JobManageServiceImpl implements JobManageService {
 
     @Autowired

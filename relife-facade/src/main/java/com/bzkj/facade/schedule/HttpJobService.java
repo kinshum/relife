@@ -7,10 +7,7 @@ import com.bzkj.entity.param.AddHttpJobParam;
 import com.bzkj.entity.vo.HttpJobDetailVO;
 
 /**
- * Http类型任务Service
- *
- * @author hellofly
- * @date 2019/4/9
+ * Http类型任务
  */
 public interface HttpJobService {
 

@@ -21,7 +21,7 @@ import java.sql.SQLException;
 @Configuration
 public class DruidConfig {
 
-	private static final Logger log = LoggerFactory.getLogger("controllerLogger");
+	private static final Logger log = LoggerFactory.getLogger("authLogger");
 
 	@Bean
 	public ServletRegistrationBean druidServlet() {

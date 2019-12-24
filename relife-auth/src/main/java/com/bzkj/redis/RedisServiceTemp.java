@@ -1,1 +1,0 @@
-package com.bzkj.redis;import com.bzkj.entity.user.SysUser;import com.google.common.collect.Maps;import java.util.Map;/** * @description: * @author: jensen * @date: created by 2019/9/11 1:51 */public class RedisServiceTemp {    public static Map<String, SysUser> userMap = Maps.newHashMap();}

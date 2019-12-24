@@ -24,6 +24,7 @@ public class DubboAutoConfiguration {
         if (applicationConfig == null) {
             applicationConfig = new ApplicationConfig();
         }
+        applicationConfig.setQosEnable(false);
         return applicationConfig;
     }
 
@@ -42,6 +43,8 @@ public class DubboAutoConfiguration {
         if (protocolConfig == null) {
             protocolConfig = new ProtocolConfig();
         }
+        protocolConfig.setId("dubbo");
+        protocolConfig.setName("dubbo");
         return protocolConfig;
     }
 
@@ -68,24 +71,21 @@ public class DubboAutoConfiguration {
         ModuleConfig moduleConfig = dubboProperties.getModule();
         if (moduleConfig == null) {
             moduleConfig = new ModuleConfig();
+            moduleConfig.setDefault(false);
         }
         return moduleConfig;
     }
 
-    @Bean
-    public MethodConfig requestMethodConfig() {
-        MethodConfig methodConfig = dubboProperties.getMethod();
-        if (methodConfig == null) {
-            methodConfig = new MethodConfig();
-        }
-        return methodConfig;
-    }
+
 
     @Bean
     public ConsumerConfig requestConsumerConfig() {
         ConsumerConfig consumerConfig = dubboProperties.getConsumer();
         if (consumerConfig == null) {
             consumerConfig = new ConsumerConfig();
+            consumerConfig.setCheck(false);
+            consumerConfig.setTimeout(40000);
+            return consumerConfig;
         }
         return consumerConfig;
     }

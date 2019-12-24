@@ -35,10 +35,10 @@ import java.util.Map;
  */
 
 @org.springframework.stereotype.Service
-@Service
+@Service(interfaceClass = HttpJobService.class)
 public class HttpJobServiceImpl implements HttpJobService {
 
-    private static final Logger logger = LoggerFactory.getLogger(HttpJobServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger("runtimeLogger");
 
     @Autowired
     private Scheduler scheduler;

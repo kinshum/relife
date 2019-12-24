@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @description: gateway 启动类
@@ -11,6 +12,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @date: created by 2019/9/11 1:04
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 public class GatewayApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
