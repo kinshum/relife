@@ -26,7 +26,7 @@ public class TestController extends BaseController {
     private SysLogService logService;
 
     @GetMapping(value = "/logList")
-    public Response getLogList(@RequestParam("limit") int limit) {
+    public Response getLogList(@RequestParam(name = "limit",defaultValue ="14" ) int limit) {
         List<SysLogs> logList = logService.getLogList(limit);
         logger.info("定时任务返回参数->{}",JsonUtil.getJsonString(logList));
         return Response.success();
