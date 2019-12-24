@@ -34,8 +34,8 @@ public class QuartzController extends BaseController {
     @Reference
     private JobManageService jobManageService;
 
-    @ApiOperation("job任务添加")
     @PostMapping("/add")
+    @ApiOperation("job任务添加")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
             @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组"),
@@ -59,33 +59,31 @@ public class QuartzController extends BaseController {
         return Result.newSuccessResult();
     }
 
-
+    @GetMapping(value = "/jobs")
     @ApiOperation("job任务列表")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "searchParam", value = "查询参数"),
             @ApiImplicitParam(paramType = "query", required = true, name = "pageSize", defaultValue = "15", value = "每页条数"),
             @ApiImplicitParam(paramType = "query", required = true, name = "pageNum", defaultValue = "1", value = "页码")
     })
-    @GetMapping(value = "/jobs")
     public Result<Page<HttpJobDetailVO>> getJobs(String searchParam, Integer pageSize, Integer pageNum) {
         Page<HttpJobDetailVO> result = httpJobService.getHttpJobs(searchParam, pageSize, pageNum);
         return Result.newSuccessResult(result);
     }
 
-
+    @PostMapping("/delete")
     @ApiOperation("job任务删除")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
             @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组")
     })
-    @PostMapping("/delete")
     public Result deleteJob(String jobName, String jobGroup) {
         jobManageService.deleteJob(jobName, jobGroup);
         return Result.newSuccessResult();
     }
 
-    @ApiOperation("job任务恢复")
     @PostMapping("/resume")
+    @ApiOperation("job任务恢复")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
             @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组")
@@ -95,8 +93,8 @@ public class QuartzController extends BaseController {
         return Result.newSuccessResult();
     }
 
-    @ApiOperation("job任务暂停")
     @PostMapping("/pause")
+    @ApiOperation("job任务暂停")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
             @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组")
@@ -106,13 +104,13 @@ public class QuartzController extends BaseController {
         return Result.newSuccessResult();
     }
 
+    @PostMapping("/update")
     @ApiOperation("job任务更新")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
             @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组"),
             @ApiImplicitParam(paramType = "query", required = true, name = "cronExpression", value = "cron表达式")
     })
-    @PostMapping("/update")
     public Result updateJob(String jobName, String jobGroup, String cronExpression) {
         jobManageService.updateCronExpression(jobName, jobGroup, cronExpression);
         return Result.newSuccessResult();
