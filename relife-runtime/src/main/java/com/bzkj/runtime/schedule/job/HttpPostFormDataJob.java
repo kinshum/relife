@@ -17,7 +17,7 @@ import java.util.Map;
 @DisallowConcurrentExecution
 public class HttpPostFormDataJob implements Job {
 
-    private static final Logger logger = LoggerFactory.getLogger(HttpPostJsonJob.class);
+    private Logger logger = LoggerFactory.getLogger("runtimeLogger");
 
     @Autowired
     private HttpJobLogsDao httpJobLogsDao;
