@@ -13,10 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @description: quartz
@@ -45,8 +42,10 @@ public class QuartzController extends BaseController {
             @ApiImplicitParam(paramType = "query", required = true, name = "params", value = "参数"),
             @ApiImplicitParam(paramType = "query", required = true, name = "cronExpression", value = "cron表达式")
     })
-    public Result addPostJsonJob(String jobName, String jobGroup, String description,
-                                 String requestType, String url, String params, String cronExpression) {
+    public Result addPostJsonJob(@RequestParam(name = "jobName") String jobName, @RequestParam(name = "jobGroup") String jobGroup,
+                                 @RequestParam(name = "description") String description, @RequestParam(name = "requestType") String requestType,
+                                 @RequestParam(name = "url") String url, @RequestParam(name = "params") String params,
+                                 @RequestParam(name = "cronExpression") String cronExpression) {
         AddHttpJobParam addHttpJobParam = new AddHttpJobParam();
         addHttpJobParam.setCronExpression(cronExpression);
         addHttpJobParam.setDescription(description);

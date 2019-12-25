@@ -181,7 +181,7 @@
             //从服务器读取数据
             loadData: function (pageNum, pageSize, search) {
                 axios({
-                    url: 'quartz/httpJob/jobs',
+                    url: '/api/v1/quartz/jobs',
                     method: 'get',
                     params: {
                         pageNum: pageNum,
@@ -209,7 +209,7 @@
             //添加任务
             add: function () {
                 axios({
-                    url: 'quartz/httpJob/add',
+                    url: '/api/v1/quartz/add',
                     method: 'post',
                     data: {
                         jobName: this.addForm.jobName,

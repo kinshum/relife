@@ -5,7 +5,8 @@ import com.bzkj.auth.controller.base.BaseController;
 import com.bzkj.entity.SysLogs;
 import com.bzkj.facade.cms.SysLogService;
 import com.bzkj.facade.schedule.JobManageService;
-import com.bzkj.rsp.Response;
+
+import com.bzkj.rsp.Result;
 import com.bzkj.utils.JsonUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +27,10 @@ public class TestController extends BaseController {
     private SysLogService logService;
 
     @GetMapping(value = "/logList")
-    public Response getLogList(@RequestParam(name = "limit",defaultValue ="14" ) int limit) {
+    public Result getLogList(@RequestParam(name = "limit",defaultValue ="14" ) int limit) {
         List<SysLogs> logList = logService.getLogList(limit);
         logger.info("定时任务返回参数->{}",JsonUtil.getJsonString(logList));
-        return Response.success();
+        return Result.newSuccessResult();
     }
 
 
