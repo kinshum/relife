@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/quartz/test")
+@RequestMapping(value = "/api/v1/test")
 public class TestController extends BaseController {
 
 

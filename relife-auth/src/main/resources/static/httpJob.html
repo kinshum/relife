@@ -208,20 +208,16 @@
 
             //添加任务
             add: function () {
+                let formData = new FormData();
+                for(var key in this.addForm) {
+                    formData.append(key, this.addForm[key]);
+                }
                 axios({
                     url: '/api/v1/quartz/add',
                     method: 'post',
-                    data: {
-                        jobName: this.addForm.jobName,
-                        jobGroup: this.addForm.jobGroup,
-                        description: this.addForm.description,
-                        requestType: this.addForm.requestType,
-                        url: this.addForm.url,
-                        params: this.addForm.params,
-                        cronExpression: this.addForm.cronExpression
-                    }
+                    data: formData
                 }).then((res) => {
-                    if (res.data.status == 0) {
+                    if (res.data.code == 0) {
                         this.$message({
                             type: 'success',
                             message: res.data.message
@@ -250,7 +246,7 @@
             //更新任务
             update: function () {
                 axios({
-                    url: 'quartz/job/update',
+                    url: '/api/v1/quartz/update',
                     method: 'post',
                     params: {
                         jobName: this.updateForm.jobName,
@@ -258,7 +254,7 @@
                         cronExpression: this.updateForm.cronExpression
                     }
                 }).then((res) => {
-                    if (res.data.status == 0) {
+                    if (res.data.code == 0) {
                         this.$message({
                             type: 'success',
                             message: res.data.message
@@ -279,14 +275,14 @@
             //暂停任务
             pauseJob: function (index, row) {
                 axios({
-                    url: 'quartz/job/pause',
+                    url: '/api/v1/quartz/pause',
                     method: 'post',
                     params: {
                         jobName: row.jobName,
                         jobGroup: row.jobGroup
                     }
                 }).then((res) => {
-                    if (res.data.status == 0) {
+                    if (res.data.code == 0) {
                         this.$message({
                             type: 'success',
                             message: res.data.message
@@ -307,14 +303,14 @@
             //恢复任务
             resumeJob: function (index, row) {
                 axios({
-                    url: 'quartz/job/resume',
+                    url: '/api/v1/quartz/resume',
                     method: 'post',
                     params: {
                         jobName: row.jobName,
                         jobGroup: row.jobGroup
                     }
                 }).then((res) => {
-                    if (res.data.status == 0) {
+                    if (res.data.code == 0) {
                         this.$message({
                             type: 'success',
                             message: res.data.message
@@ -340,14 +336,14 @@
                     type: 'warning'
                 }).then(() => {
                     axios({
-                        url: 'quartz/job/delete',
+                        url: '/api/v1/quartz/delete',
                         method: 'post',
                         params: {
                             jobName: row.jobName,
                             jobGroup: row.jobGroup
                         }
                     }).then((res) => {
-                        if (res.data.status == 0) {
+                        if (res.data.code == 0) {
                             this.$message({
                                 type: 'success',
                                 message: res.data.message

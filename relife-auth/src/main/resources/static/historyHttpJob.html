@@ -81,7 +81,7 @@
             //从服务器读取数据
             loadData: function (pageNum, pageSize, search) {
                 axios({
-                    url: 'quartz/httpJob/historyJobs',
+                    url: '/api/v1/quartz/historyJobs',
                     method: 'get',
                     params: {
                         pageNum: pageNum,

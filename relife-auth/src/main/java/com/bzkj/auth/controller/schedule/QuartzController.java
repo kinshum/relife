@@ -3,6 +3,7 @@ package com.bzkj.auth.controller.schedule;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.bzkj.auth.controller.base.BaseController;
+import com.bzkj.entity.HttpJobLogs;
 import com.bzkj.entity.Page;
 import com.bzkj.entity.param.AddHttpJobParam;
 import com.bzkj.entity.vo.HttpJobDetailVO;
@@ -114,5 +115,42 @@ public class QuartzController extends BaseController {
         jobManageService.updateCronExpression(jobName, jobGroup, cronExpression);
         return Result.newSuccessResult();
     }
+
+
+    @ApiOperation("job任务历史查询")
+    @RequestMapping("/historyJobs")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", required = true, name = "searchParam", value = "搜索参数"),
+            @ApiImplicitParam(paramType = "query", required = true, name = "pageSize", value = "每页条数"),
+            @ApiImplicitParam(paramType = "query", required = true, name = "pageNum", value = "页码")
+    })
+    public Result<Page<HttpJobDetailVO>> getHistoryJobs(@RequestParam(name = "searchParam", required = false) String searchParam,
+                                                        @RequestParam(name = "pageSize", required = false, defaultValue = "15") Integer pageSize,
+                                                        @RequestParam(name = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
+
+        Page<HttpJobDetailVO> result = httpJobService.getHistoryHttpJobs(searchParam, pageSize, pageNum);
+        return Result.newSuccessResult(result);
+
+    }
+
+    @ApiOperation("job任务日志查询")
+    @GetMapping("/jobLogs")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", required = true, name = "jobName", value = "任务名称"),
+            @ApiImplicitParam(paramType = "query", required = true, name = "jobGroup", value = "任务组"),
+            @ApiImplicitParam(paramType = "query", name = "searchParam", value = "查询参数"),
+            @ApiImplicitParam(paramType = "query", required = true, name = "pageSize", defaultValue = "15", value = "每页条数"),
+            @ApiImplicitParam(paramType = "query", required = true, name = "pageNum", defaultValue = "1", value = "页码")
+    })
+    public Result<Page<HttpJobLogs>> getJobLogs(@RequestParam(name = "jobName", required = false) String jobName,
+                                                @RequestParam(name = "jobGroup", required = false) String jobGroup,
+                                                @RequestParam(name = "searchParam", required = false) String searchParam,
+                                                @RequestParam(name = "pageSize", required = false, defaultValue = "15") Integer pageSize,
+                                                @RequestParam(name = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
+
+        Page<HttpJobLogs> result = httpJobService.getHttpJobLogs(jobName, jobGroup, searchParam, pageSize, pageNum);
+        return Result.newSuccessResult(result);
+    }
+
 
 }

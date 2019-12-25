@@ -8,6 +8,8 @@ import com.bzkj.entity.HttpJobLogs;
 import com.bzkj.entity.Page;
 import com.bzkj.entity.param.AddHttpJobParam;
 import com.bzkj.entity.vo.HttpJobDetailVO;
+import com.bzkj.exception.CommonBizException;
+import com.bzkj.exception.ExpCodeEnum;
 import com.bzkj.facade.schedule.HttpJobService;
 import com.bzkj.runtime.schedule.dao.HttpJobDetailsDao;
 import com.bzkj.runtime.schedule.dao.HttpJobLogsDao;
@@ -77,7 +79,7 @@ public class HttpJobServiceImpl implements HttpJobService {
         httpJobDetails.setRequestType(requestType);
         httpJobDetails.setHttpUrl(url);
         if (!JsonValidUtil.isJson(jsonParamsStr)) {
-            throw new RuntimeException("请将请求参数转为合法的json字符串!");
+            throw new CommonBizException(ExpCodeEnum.PARAMS_JSON_ERROR);
         }
 
         Map<String, Object> jobParamsMap = new HashMap<>();

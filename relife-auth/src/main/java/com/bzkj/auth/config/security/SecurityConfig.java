@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/*.html", "/favicon.ico", "/css/**", "/js/**", "/fonts/**", "/layui/**", "/img/**",
                         "/v2/api-docs/**", "/swagger-resources/**", "/webjars/**", "/pages/**", "/druid/**",
-                        "/statics/**","/docs","/api/v1/quartz/**"
+                        "/statics/**","/docs","/api/v1/quartz/**","/api/v1/test/**"
                 )
                 .permitAll().anyRequest().authenticated();
         http.formLogin().loginProcessingUrl("/api/login")
