@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<configuration>
+<configuration >
 	<springProperty name="logFile" source="log.file" />
+	<springProperty name="logHome" source="log.home" />
 	<springProperty name="rootlevel" source="log.level.root" />
 	<springProperty name="mylevel" source="log.level.my" />
 	<springProperty name="maxFileSize" source="log.maxsize" />
@@ -13,50 +14,69 @@
 		</encoder>
 	</appender>
 
-	<appender name="cmsLog"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logFile}</file>
+	<appender name="cmsLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logHome}/${logFile}.log</file>
 		<encoder>
 			<pattern>%d [%thread] %-5level -[%file:%line]- %msg%n
 			</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${logFile}.%d{yyyy-MM-dd}.%i</fileNamePattern>
-			<maxFileSize>${maxFileSize}</maxFileSize>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 按天分文件夹存放 ，并压缩 -->
+			<fileNamePattern>${logHome}/%d{yyyy-MM-dd}/${logFile}_%i.log</fileNamePattern>
+			<!-- 每个文件的最大值 10MB,超过则编号,生成新文件 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- 例如，假设每天滚动，且 maxHistory 是 7，则只 保留最近 7 天的归档文件，删除之前的文件。 -->
+			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 	</appender>
 
 	<appender name="errorLog"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logFile}.error</file>
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logHome}/${logFile}_error.log</file>
 		<encoder>
 			<pattern>%d [%thread] %-5level %logger{36} -[%file:%line]- %msg%n
 			</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${logFile}.error.%d{yyyy-MM-dd}.%i</fileNamePattern>
-			<maxFileSize>${maxFileSize}</maxFileSize>
-		</rollingPolicy>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>error</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
+		<!--滚动策略-->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名-->
+			<FileNamePattern>${logHome}/%d{yyyy-MM-dd}/${logFile}_error_%i.log</FileNamePattern>
+			<!--日志文件保留天数-->
+			<MaxHistory>30</MaxHistory>
+			<!--日志文件最大的大小-->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
 	</appender>
 
 	<appender name="sqlLog"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logFile}.sql</file>
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logHome}/${logFile}_sql.log</file>
 		<encoder>
 			<pattern>%d [%thread] %msg%n
 			</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${logFile}.sql.%d{yyyy-MM-dd}.%i</fileNamePattern>
-			<maxFileSize>${maxFileSize}</maxFileSize>
+		<!--滚动策略-->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--日志文件输出的文件名-->
+			<FileNamePattern>${logHome}/%d{yyyy-MM-dd}/${logFile}_sql_%i.log</FileNamePattern>
+			<!--日志文件保留天数-->
+			<MaxHistory>30</MaxHistory>
+			<!--日志文件最大的大小-->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 	</appender>
 
