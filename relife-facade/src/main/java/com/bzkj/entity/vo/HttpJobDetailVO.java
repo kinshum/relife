@@ -1,6 +1,5 @@
 package com.bzkj.entity.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
